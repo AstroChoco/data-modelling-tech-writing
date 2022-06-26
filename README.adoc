@@ -1,0 +1,18 @@
+= About this repo
+:toc:
+
+This repo is used to host the technical writing exercise I did for the interview process of the technical writer opening at Neo4j.
+
+See the technical writing exercise xref:data-modeling-swedish-major-holidays-and-food.adoc[Data modeling Swedish major holidays and food].
+
+== Target audience
+
+Anyone who is new to data concepts and data modeling.
+
+== Scope
+
+The exercise scope covers the following:
+
+* Build a simple graph data model of real-life things
+* Associate real-life things with concepts in graph data modeling.
+* Answer example questions in real-life scenarios with the data model.
