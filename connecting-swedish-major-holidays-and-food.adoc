@@ -33,11 +33,13 @@ To visualize Swedish major holidays and food in a graph data model, essentially 
 === Step 1: Choose things and define a dataset
 
 Swedish major holidays includes:
+
 * Christmas
 * Easter
 * Midsummer
 
 The following food are commonly served on those holidays:
+
 * Dill boiled potatoes
 * Jansson’s temptation (A creamy potato and fish gratin)
 * Pickled herrings
