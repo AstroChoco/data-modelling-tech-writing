@@ -22,7 +22,7 @@ A graph data model is represented by the following:
 * Data entities are represented by nodes and labels.
 * Nodes are connected through relationships. Nodes and relationships can be further defined by properties.
 
-For information about nodes, labels, properties, and relationships, see https://neo4j.com/developer/guide-data-modeling/[Neo4j Data modeling guidelines].
+To know more about nodes, labels, properties, and relationships, see https://neo4j.com/developer/guide-data-modeling/[Neo4j Data modeling guidelines].
 
 To visualize Swedish major holidays and food in a graph data model, essentially you need to identify the things and their relationships before connecting them all together:
 
