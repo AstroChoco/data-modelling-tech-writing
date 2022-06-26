@@ -3,9 +3,9 @@
 
 In Sweden, the Midsummer week is the most important time other than Christmas. According to my colleagues, if we’re not allowed to take the time off, a revolution will arise with snaps and pickled herrings in the air.
 
-Friday is Swedish Midsummer Eve. While people are dancing The Little Frogs dance around a maypole as in the following xref:figure[Figure], I can’t help noticing the main food is pickled herring and potatoes once again. Just the same as other major holidays like Christmas and Easter.
+Friday is Swedish Midsummer Eve. While people are dancing The Little Frogs dance around a maypole (see the following xref:figure[figure]), I can’t help noticing the main food is pickled herring and potatoes once again. Just the same as other major holidays like Christmas and Easter.
 
-Isn’t the relationship between food and holidays interesting and worth graphing?
+How are Swedish major holidays are connected to food in the world of data?
 
 [[figure]]
 .People dancing The Little Frogs (Source: Wikipedia entry The Little Frogs (Swedish: Små grodorna))
@@ -13,17 +13,24 @@ image::https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/%C3%85rsn%C3%A4
 
 == Visualising the data model
 
-A graph data model visualizes things and connects them through their relationships.
+A graph data model visualizes things and connects them through their relationships. Things are data entities of a dataset.
 
-To graph Swedish major holidays and food, essentially we need to identify the things and their relationships before connecting them all together.
+A graph data model is represented by the following:
+
+* Data entities are represented by nodes and labels.
+* Nodes are connected through relationships. Nodes and relationships can be further defined by properties.
+
+For information about nodes, labels, properties, and relationships, see https://neo4j.com/developer/guide-data-modeling/[Neo4j Data modeling guidelines].
+
+To visualize Swedish major holidays and food in a graph data model, essentially we need to identify the things and their relationships before connecting them all together.
 
 Let’s follow these steps:
 
-. Choose things and define a data set.
-. Identify data entities and define nodes.
-. Identify data categories and define labels.
-. Identify and define relationships.
-. Connect all together and form a data model.
+. xref:_step_1_choose_things_and_define_a_data_set[Choose things and define a dataset].
+. xref:_step_2_identify_data_entities_and_define_nodes[Identify data entities and define nodes].
+. xref:_step_3_identify_data_categories_and_define_labels[Identify data categories and define labels].
+. xref:_step_4_identify_and_define_relationships_[Identify and define relationships].
+. xref:_step_5_connecting_all_together[Connect all together and form a data model].
 
 === Step 1: Choose things and define a data set
 
@@ -43,7 +50,7 @@ The following food are commonly served on those holidays:
 
 === Step 2: Identify data entities and define nodes
 
-Based on the scenario, the following data entities are nodes:
+The major holidays and food are identified data entities are identified:
 
 * Christmas
 * Easter
@@ -54,32 +61,40 @@ Based on the scenario, the following data entities are nodes:
 * Snaps
 * Strawberries
 
+The data entities are defined as nodes.
+
+[[Nodes]]
+.Nodes
+image::images/nodes.svg[The major holidays and food are defined as nodes.]
+
 === Step 3: Identify data categories and define labels
 
-The nodes have two different labels
+Based on the data categories, the nodes have the following labels:
 
 * Holiday
 * Food
-    ** Dish
-    ** Drink
+** Dish
+** Drink
 * Fruit
+
+image::images/nodes-labels.svg[Node added with labels]
 
 === Step 4: Identify and define relationships
 
 The nodes are connected through the following relationships:
 
 * Holidays happen one before another
-    ** Easter happens before Midsummer
-    ** Midsummer happens before Christmas
-    ** Christmas happens before Easter
+** Easter happens before Midsummer
+** Midsummer happens before Christmas
+** Christmas happens before Easter
 * Food and drink are served on a holiday:
-    ** Easter: Pickled herring, dill boiled potatoes, Jansson’s temptation
-    ** Midsummer: the same as Easter with addition of snaps
-    ** Christmas: the same as Midsummer
+** Easter: Pickled herring, dill boiled potatoes, Jansson’s temptation
+** Midsummer: the same as Easter with addition of snaps
+** Christmas: the same as Midsummer
 * Food and drink are served with each other on a holiday:
-    ** Easter: Pickled herring, dill boiled potatoes, Jansson’s temptation
-    ** Midsummer: the same as Easter with addition of snaps
-    ** Christmas: the same as Midsummer
+** Easter: Pickled herring, dill boiled potatoes, Jansson’s temptation
+** Midsummer: the same as Easter with addition of snaps
+** Christmas: the same as Midsummer
 
 === Step 5: Connecting all together
 
@@ -89,7 +104,7 @@ Midsummer is before Christmas. In Midsummer, people mainly eat pickled herrings,
 
 [[figure]]
 .Dataset diagram
-image::/images/Swedish-major-holidays-and-food.svg[xxx]
+image::/images/visualization-swedish-major-holidays-and-food.svg[tbd]
 
 == Creating the data model in Neo4j
 
@@ -126,11 +141,10 @@ CREATE (snaps)-[:SERVED_ON]->(christmas)
 CREATE (strawberry)-[:SERVED_ON]->(midsummer)
 CREATE (easter)-[:BEFORE]->(midsummer)-[:BEFORE]->(christmas)-[:BEFORE]->(easter)
 RETURN herring, potato, janssons, snaps, strawberry, easter, midsummer, christmas
-
 ----
-
 ====
 
+image::images/query-create-data-model-swedish-major-holidays-and-food.png[tbd]
 
 == Using the data model
 
@@ -138,16 +152,16 @@ A knowledge graph xxx
 
 This data model can help with questions about Swedish holidays and food. For example
 
-=== What Swedish food is common for midsummer, Christmas, and Easter?
+=== What Swedish food is common for Midsummer, Christmas, and Easter?
 
 .Cypher query
 [source,cypher]
 ----
-MATCH (food:Food) WHERE (food)-[:SERVED_ON]->(:Holiday {name:"Midsummer"}) AND (food)-[:SERVED_ON]->(:Holiday {name:"Easter"}) AND (food)-[:SERVED_ON]->(:Holiday {name:"Christmas"})
+MATCH (food:Food) WHERE (food)-[:SERVED_ON]->(:Holiday {name: "Midsummer"}) AND (food)-[:SERVED_ON]->(:Holiday {name: "Easter"}) AND (food)-[:SERVED_ON]->(:Holiday {name: "Christmas"})
 RETURN DISTINCT food
 ----
 
-=== What’s the typical food for midsummer?
+=== What’s the typical food for Midsummer?
 
 .Cypher query
 [source,cypher]
