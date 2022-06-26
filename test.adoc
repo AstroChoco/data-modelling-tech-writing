@@ -1,0 +1,7 @@
+= Graphing Swedish major holidays and food
+
+In Sweden, the Midsummer week is the most important time other than Christmas. According to my colleagues, if we’re not allowed to take the time off, a revolution will arise with snaps and pickled herrings in the air.
+
+Friday is Swedish Midsummer Eve. While people are dancing The Little Frogs dance around a maypole (see the following picture), I can’t help noticing the main food is pickled herring and potatoes once again. Just the same as other major holidays like Christmas and Easter. Isn’t the relationship between food and holidays interesting and worth graphing?
+
+image::https://commons.wikimedia.org/wiki/File:%C3%85rsn%C3%A4s,_Midsummer_of_69_(3).JPG#/media/File:%C3%85rsn%C3%A4s,_Midsummer_of_69_(3).JPG[Source: Wikipedia entry The Little Frogs (Swedish: Små grodorna),640,427]
