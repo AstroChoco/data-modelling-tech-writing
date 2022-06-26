@@ -1,7 +1,9 @@
 = About this repo
 :toc:
 
-This repo is used for the technical writing exercise I did for the interview process of the technical writer opening at Neo4j.
+This repo is used to host the technical writing exercise I did for the interview process of the technical writer opening at Neo4j.
+
+See the technical writing exercise xref:data-modeling-swedish-major-holidays-and-food.adoc[Data modeling Swedish major holidays and food].
 
 == Target audience
 
