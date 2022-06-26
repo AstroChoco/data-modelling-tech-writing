@@ -1,19 +1,21 @@
-= Connecting Swedish major holidays and food
+= Data modeling Swedish major holidays and food
 :toc:
 
-In Sweden, the Midsummer week is the most important time other than Christmas. According to my colleagues, if we’re not allowed to take the time off, a revolution will arise with snaps and pickled herrings in the air.
+In Sweden, the Midsummer week is the most important time other than Christmas. Anecdotally speaking, if people are not allowed to take the time off, a revolution will arise with snaps and pickled herring in the air.
 
-Friday is Swedish Midsummer Eve. While people are dancing The Little Frogs dance around a maypole (see the following image), I can’t help noticing the main food is pickled herring and potatoes once again. Just the same as other major holidays like Christmas and Easter.
-
-How are Swedish major holidays are connected to food in the world of data?
+Friday is Swedish Midsummer Eve. While people are dancing The Little Frogs dance around a maypole (see the following image), the main food is pickled herring and potatoes once again. Just the same as other major holidays like Christmas and Easter.
 
 [#img-little-frogs-dance]
 .People dancing The Little Frogs (Source: Wikipedia entry The Little Frogs (Swedish: Små grodorna))
 image::https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/%C3%85rsn%C3%A4s%2C_Midsummer_of_69_%283%29.JPG/640px-%C3%85rsn%C3%A4s%2C_Midsummer_of_69_%283%29.JPG[People dancing The Little Frogs dance around a maypole on a Swedish Midsummer celebration.]
 
-== Visualising the data model
+How are Swedish major holidays are connected to food in the world of data, you might wonder?
 
-A graph data model visualizes things and connects them through their relationships. Things are data entities of a dataset.
+The following steps will help you find out the connection.
+
+== Visualizing the data model
+
+A graph data model visualizes things and connects them through their relationships. Things can be seen as data entities of a dataset.
 
 A graph data model is represented by the following:
 
@@ -22,12 +24,12 @@ A graph data model is represented by the following:
 
 For information about nodes, labels, properties, and relationships, see https://neo4j.com/developer/guide-data-modeling/[Neo4j Data modeling guidelines].
 
-To visualize Swedish major holidays and food in a graph data model, essentially we need to identify the things and their relationships before connecting them all together. Let’s follow these steps:
+To visualize Swedish major holidays and food in a graph data model, essentially you need to identify the things and their relationships before connecting them all together:
 
-. xref:_step_1_choose_things_and_define_a_data_set[Choose things and define a dataset].
+. xref:_step_1_choose_things_and_define_a_dataset[Choose things and define a dataset].
 . xref:_step_2_identify_data_entities_and_define_nodes[Identify data entities and define nodes].
 . xref:_step_3_identify_data_categories_and_define_labels[Identify data categories and define labels].
-. xref:_step_4_identify_and_define_relationships_[Identify and define relationships].
+. xref:_step_4_identify_and_define_relationships[Identify and define relationships].
 . xref:_step_5_connecting_all_together[Connect all together and form a data model].
 
 === Step 1: Choose things and define a dataset
@@ -42,11 +44,11 @@ The following food are commonly served on those holidays:
 
 * Dill boiled potatoes
 * Jansson’s temptation (A creamy potato and fish gratin)
-* Pickled herrings
-* Snaps
+* pickled herring
+* Snaps (Distilled liquor from potatoes or grains)
 * Strawberries
 
-The holidays and food are defined as a dataset to be modeled.
+You can define the holidays and food as a dataset to be modeled.
 
 === Step 2: Identify data entities and define nodes
 
@@ -57,11 +59,11 @@ Each holiday and food of the defined dataset is a data entity:
 * Midsummer
 * Dill boiled potatoes
 * Jansson’s temptation (A creamy potato and fish gratin)
-* Pickled herrings
+* pickled herring
 * Snaps
 * Strawberries
 
-The data entities are defined as nodes in the graph data model. See <<image-nodes>>.
+You can define the data entities as nodes in the graph data model. See <<image-nodes>>.
 
 [#image-nodes]
 .Nodes
@@ -69,7 +71,9 @@ image::images/nodes.svg[The major holidays and food are defined as nodes.]
 
 === Step 3: Identify data categories and define labels
 
-The dataset can be categorized into the following groups:
+Based on how you usually categorize the holidays and food, the dataset can be categorized accordingly.
+
+For example, the following categories are common:
 
 * Holiday
 * Food
@@ -78,7 +82,7 @@ The dataset can be categorized into the following groups:
 * Fruit
 * Food
 
-The categories are defined as labels in the graph data model. See <<image-nodes-with-labels>>.
+You can use the categories as labels in the graph data model. See <<image-nodes-with-labels>>.
 
 [#image-nodes-with-labels]
 .Nodes with labels
@@ -86,28 +90,28 @@ image::images/nodes-labels.svg[Node added with labels]
 
 === Step 4: Identify and define relationships
 
-The nodes are connected through the following relationships:
+Within the dataset, the nodes are connected through the following relationships:
 
 * Holidays happen one before another:
     ** Easter happens before Midsummer
     ** Midsummer happens before Christmas
     ** Christmas happens before Easter
 * Food and drink are served on a holiday:
-    ** Easter: Pickled herrings, dill boiled potatoes, Jansson’s temptation
+    ** Easter: pickled herring, dill boiled potatoes, Jansson’s temptation
     ** Midsummer: the same as Easter with addition of snaps
     ** Christmas: the same as Midsummer except strawberries
 * Food and drink are served with each other on a holiday:
-    ** Easter: Pickled herrings, dill boiled potatoes, Jansson’s temptation
+    ** Easter: pickled herring, dill boiled potatoes, Jansson’s temptation
     ** Midsummer: the same as Easter with addition of snaps
     ** Christmas: the same as Midsummer except strawberries
 
-The relationships are defined in the graph data model.
+You can use `BEFORE`, `SERVED_ON`, and `SERVED_WITH` as the relationships for the nodes in the graph data model.
 
 === Step 5: Connecting all together
 
-By connecting all the nodes and labels through the relationships, the data model is visualized. See <<image-data-model-visualization>>.
+Now you can see a visualized data model by connecting all the nodes and labels through the relationships. See <<image-data-model-visualization>>.
 
-In the data model, Midsummer is before Christmas. In Midsummer, people mainly eat pickled herrings, dill boiled potatoes, Jansson’s temptation, strawberries, and drink snaps.
+In the data model, by looking at Midsummer node, you can see that Midsummer is before Christmas. In Midsummer, people mainly eat pickled herring, dill boiled potatoes, Jansson’s temptation, strawberries, and drink snaps.
 
 [#image-data-model-visualization]
 .Data model
@@ -161,9 +165,9 @@ image::images/query-create-data-model-swedish-major-holidays-and-food.png[tbd]
 
 == Using the data model
 
-The graph data model of Swedish major holidays and food is also known as a knowledge graph. A knowledge graph represents knowledge about a specific domain. In this case, the culture domain about Swedish holidays and good.
+The graph data model of Swedish major holidays and food is also known as a knowledge graph. A knowledge graph represents knowledge about a specific domain. In this case, the culture about Swedish holidays and good.
 
-An an example, such a data model might be used by a chatbot to find answers to the following questions.
+As an example, you can use such a data model to power a chatbot to find answers to the following questions.
 
 === What Swedish food is common for Midsummer, Christmas, and Easter?
 
@@ -174,7 +178,7 @@ MATCH (food:Food) WHERE (food)-[:SERVED_ON]->(:Holiday {name: "Midsummer"}) AND 
 RETURN DISTINCT food
 ----
 
-Answer: Dill boiled potatoes and pickled herrings.
+Answer: Dill boiled potatoes and pickled herring.
 
 === What’s the typical food for Midsummer?
 
@@ -185,9 +189,9 @@ MATCH (food:Food) WHERE (food)-[:SERVED_ON]->(:Holiday {name: "Midsummer"})
 RETURN DISTINCT food
 ----
 
-Answer: Dill boiled potatoes, Jansson’s temptation, pickled herrings, snaps, and strawberries.
+Answer: Dill boiled potatoes, Jansson’s temptation, pickled herring, snaps, and strawberries.
 
-=== When do Swedes eat pickled herrings with snaps?
+=== When do Swedes eat pickled herring with snaps?
 
 .Cypher query
 [source,cypher]
