@@ -105,7 +105,7 @@ You can use `BEFORE`, `SERVED_ON`, and `SERVED_WITH` as the relationships for th
 
 Now you can see a visualized data model by connecting all the nodes and labels through the relationships. See <<image-data-model-visualization>>.
 
-In the data model, by looking at Midsummer node, you can see that Midsummer is before Christmas. In Midsummer, people mainly eat pickled herring, dill boiled potatoes, Jansson’s temptation, strawberries, and drink snaps.
+In the data model, taking the Midsummer node as an example, you can see that Midsummer is before Christmas. In Midsummer, people mainly eat pickled herring, dill boiled potatoes, Jansson’s temptation, strawberries, and drink snaps.
 
 [#image-data-model-visualization]
 .Data model
@@ -161,7 +161,7 @@ image::images/query-create-data-model-swedish-major-holidays-and-food.png[tbd]
 
 The graph data model of Swedish major holidays and food is also known as a knowledge graph. A knowledge graph represents knowledge about a specific domain. In this case, the culture about Swedish holidays and good.
 
-As an example, you can use such a data model to power a chatbot to find answers to the following questions.
+For example, you can use such a data model to power a chatbot to find answers to the following questions.
 
 === What Swedish food is common for Midsummer, Christmas, and Easter?
 
