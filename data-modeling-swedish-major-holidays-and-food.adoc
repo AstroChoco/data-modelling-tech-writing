@@ -92,11 +92,11 @@ Within the dataset, the nodes are connected through the following relationships:
     ** Christmas happens before Easter
 * Food and drink are served on a holiday:
     ** Easter: pickled herring, dill boiled potatoes, Jansson’s temptation
-    ** Midsummer: the same as Easter with addition of snaps
+    ** Midsummer: the same as Easter with addition of snaps and strawberries
     ** Christmas: the same as Midsummer except strawberries
 * Food and drink are served with each other on a holiday:
     ** Easter: pickled herring, dill boiled potatoes, Jansson’s temptation
-    ** Midsummer: the same as Easter with addition of snaps
+    ** Midsummer: the same as Easter with addition of snaps and strawberries
     ** Christmas: the same as Midsummer except strawberries
 
 You can use `BEFORE`, `SERVED_ON`, and `SERVED_WITH` as the relationships for the nodes in the graph data model.
