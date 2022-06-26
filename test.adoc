@@ -1,7 +1,165 @@
-= Graphing Swedish major holidays and food
+= Connecting Swedish major holidays and food
+:toc:
 
 In Sweden, the Midsummer week is the most important time other than Christmas. According to my colleagues, if we’re not allowed to take the time off, a revolution will arise with snaps and pickled herrings in the air.
 
-Friday is Swedish Midsummer Eve. While people are dancing The Little Frogs dance around a maypole (see the following picture), I can’t help noticing the main food is pickled herring and potatoes once again. Just the same as other major holidays like Christmas and Easter. Isn’t the relationship between food and holidays interesting and worth graphing?
+Friday is Swedish Midsummer Eve. While people are dancing The Little Frogs dance around a maypole as in the following xref:figure[Figure], I can’t help noticing the main food is pickled herring and potatoes once again. Just the same as other major holidays like Christmas and Easter.
 
-image::https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/%C3%85rsn%C3%A4s%2C_Midsummer_of_69_%283%29.JPG/640px-%C3%85rsn%C3%A4s%2C_Midsummer_of_69_%283%29.JPG[Source: Wikipedia entry The Little Frogs (Swedish: Små grodorna)]
+Isn’t the relationship between food and holidays interesting and worth graphing?
+
+[[figure]]
+.People dancing The Little Frogs (Source: Wikipedia entry The Little Frogs (Swedish: Små grodorna))
+image::https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/%C3%85rsn%C3%A4s%2C_Midsummer_of_69_%283%29.JPG/640px-%C3%85rsn%C3%A4s%2C_Midsummer_of_69_%283%29.JPG[People dancing The Little Frogs dance around a maypole on a Swedish Midsummer celebration.]
+
+== Visualising the data model
+
+A graph data model visualizes things and connects them through their relationships.
+
+To graph Swedish major holidays and food, essentially we need to identify the things and their relationships before connecting them all together.
+
+Let’s follow these steps:
+
+. Choose things and define a data set.
+. Identify data entities and define nodes.
+. Identify data categories and define labels.
+. Identify and define relationships.
+. Connect all together and form a data model.
+
+=== Step 1: Choose things and define a data set
+
+In Sweden, there are many different holidays. The following are major holidays:
+
+* Christmas
+* Easter
+* Midsummer
+
+The following food are commonly served on those holidays:
+
+* Dill boiled potatoes
+* Jansson’s temptation (A creamy potato and fish gratin)
+* Pickled herring
+* Snaps
+* Strawberries
+
+=== Step 2: Identify data entities and define nodes
+
+Based on the scenario, the following data entities are nodes:
+
+* Christmas
+* Easter
+* Midsummer
+* Dill boiled potatoes
+* Jansson’s temptation (A creamy potato and fish gratin)
+* Pickled herring
+* Snaps
+* Strawberries
+
+=== Step 3: Identify data categories and define labels
+
+The nodes have two different labels
+
+* Holiday
+* Food
+    ** Dish
+    ** Drink
+* Fruit
+
+=== Step 4: Identify and define relationships
+
+The nodes are connected through the following relationships:
+
+* Holidays happen one before another
+    ** Easter happens before Midsummer
+    ** Midsummer happens before Christmas
+    ** Christmas happens before Easter
+* Food and drink are served on a holiday:
+    ** Easter: Pickled herring, dill boiled potatoes, Jansson’s temptation
+    ** Midsummer: the same as Easter with addition of snaps
+    ** Christmas: the same as Midsummer
+* Food and drink are served with each other on a holiday:
+    ** Easter: Pickled herring, dill boiled potatoes, Jansson’s temptation
+    ** Midsummer: the same as Easter with addition of snaps
+    ** Christmas: the same as Midsummer
+
+=== Step 5: Connecting all together
+
+As shown in the following graph, the data model is formed by connecting the data entities together through the relationships.
+
+Midsummer is before Christmas. In Midsummer, people mainly eat pickled herrings, dill boiled potatoes, Jansson’s temptation, strawberries, and drink snaps.
+
+[[figure]]
+.Dataset diagram
+image::/images/Swedish-major-holidays-and-food.svg[xxx]
+
+== Creating the data model in Neo4j
+
+Cypher is a graph query language for querying the Neo4j database. Cyper query for creating nodes, labels, and their relationships.
+
+.Click to open the code example
+[%collapsible]
+====
+[source,cypher]
+----
+CREATE (herring:Food:Dish {name:"pickled herring"}),(potato:Food:Dish {name:"Dill boiled potatoes"}),(janssons:Food:Dish {name:"Jansson's temptation"}),(snaps:Food:Drink {name:"snaps"}),(strawberry:Food:Fruit {name:"strawberries"})
+CREATE (easter:Holiday {name:"Easter"}),(midsummer:Holiday {name:"Midsummer"}),(christmas:Holiday {name:"Christmas"})
+CREATE (herring)-[:SERVED_WITH]->(potato)-[:SERVED_WITH]->(herring)
+CREATE (potato)-[:SERVED_WITH]->(janssons)-[:SERVED_WITH]->(potato)
+CREATE (janssons)-[:SERVED_WITH]->(snaps)-[:SERVED_WITH]->(janssons)
+CREATE (herring)-[:SERVED_WITH]->(janssons)-[:SERVED_WITH]->(herring)
+CREATE (herring)-[:SERVED_WITH]->(snaps)-[:SERVED_WITH]->(herring)
+CREATE (potato)-[:SERVED_WITH]->(snaps)-[:SERVED_WITH]->(potato)
+CREATE (strawberry)-[:SERVED_WITH]->(snaps)-[:SERVED_WITH]->(strawberry)
+CREATE (strawberry)-[:SERVED_WITH]->(janssons)-[:SERVED_WITH]->(strawberry)
+CREATE (strawberry)-[:SERVED_WITH]->(herring)-[:SERVED_WITH]->(strawberry)
+CREATE (strawberry)-[:SERVED_WITH]->(potato)-[:SERVED_WITH]->(strawberry)
+CREATE (herring)-[:SERVED_ON]->(easter)
+CREATE (herring)-[:SERVED_ON]->(midsummer)
+CREATE (herring)-[:SERVED_ON]->(christmas)
+CREATE (potato)-[:SERVED_ON]->(easter)
+CREATE (potato)-[:SERVED_ON]->(midsummer)
+CREATE (potato)-[:SERVED_ON]->(christmas)
+CREATE (janssons)-[:SERVED_ON]->(easter)
+CREATE (janssons)-[:SERVED_ON]->(midsummer)
+CREATE (jassons)-[:SERVED_ON]->(christmas)
+CREATE (snaps)-[:SERVED_ON]->(midsummer)
+CREATE (snaps)-[:SERVED_ON]->(christmas)
+CREATE (strawberry)-[:SERVED_ON]->(midsummer)
+CREATE (easter)-[:BEFORE]->(midsummer)-[:BEFORE]->(christmas)-[:BEFORE]->(easter)
+RETURN herring, potato, janssons, snaps, strawberry, easter, midsummer, christmas
+
+----
+
+====
+
+
+== Using the data model
+
+A knowledge graph xxx
+
+This data model can help with questions about Swedish holidays and food. For example
+
+=== What Swedish food is common for midsummer, Christmas, and Easter?
+
+.Cypher query
+[source,cypher]
+----
+MATCH (food:Food) WHERE (food)-[:SERVED_ON]->(:Holiday {name:"Midsummer"}) AND (food)-[:SERVED_ON]->(:Holiday {name:"Easter"}) AND (food)-[:SERVED_ON]->(:Holiday {name:"Christmas"})
+RETURN DISTINCT food
+----
+
+=== What’s the typical food for midsummer?
+
+.Cypher query
+[source,cypher]
+----
+MATCH (food:Food) WHERE (food)-[:SERVED_ON]->(:Holiday {name: "Midsummer"}) RETURN DISTINCT food
+----
+
+=== When do Swedes eat pickled herrings with snaps?
+
+.Cypher query
+[source,cypher]
+----
+MATCH (holiday:Holiday) WHERE (holiday)<-[:SERVED_ON]-(:Drink {name: "snaps"})-[:SERVED_WITH]->(:Dish {name: "pickled herring"})
+RETURN DISTINCT holiday
+----
