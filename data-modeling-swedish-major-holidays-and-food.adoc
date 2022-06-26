@@ -24,13 +24,7 @@ A graph data model is represented by the following:
 
 To know more about nodes, labels, properties, and relationships, see https://neo4j.com/developer/guide-data-modeling/[Neo4j Data modeling guidelines].
 
-To visualize Swedish major holidays and food in a graph data model, essentially you need to identify the things and their relationships before connecting them all together:
-
-. xref:_step_1_choose_things_and_define_a_dataset[Choose things and define a dataset].
-. xref:_step_2_identify_data_entities_and_define_nodes[Identify data entities and define nodes].
-. xref:_step_3_identify_data_categories_and_define_labels[Identify data categories and define labels].
-. xref:_step_4_identify_and_define_relationships[Identify and define relationships].
-. xref:_step_5_connecting_all_together[Connect all together and form a data model].
+To visualize Swedish major holidays and food in a graph data model, essentially you need to identify the things and their relationships before connecting them all together
 
 === Step 1: Choose things and define a dataset
 
