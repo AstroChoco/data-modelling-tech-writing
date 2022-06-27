@@ -171,7 +171,7 @@ For example, you can use such a data model to power a chatbot to find answers to
 MATCH (food:Food) WHERE (food)-[:SERVED_ON]->(:Holiday {name: "Midsummer"}) AND (food)-[:SERVED_ON]->(:Holiday {name: "Easter"}) AND (food)-[:SERVED_ON]->(:Holiday {name: "Christmas"})
 RETURN DISTINCT food
 ----
-
+// The query returns duplicates even with DISTINCT. Only one time it returned without duplicates. How would you suggest I modify the query to remove all duplicates?
 Answer: Dill boiled potatoes and pickled herring.
 
 === What’s the typical food for Midsummer?
@@ -182,7 +182,7 @@ Answer: Dill boiled potatoes and pickled herring.
 MATCH (food:Food) WHERE (food)-[:SERVED_ON]->(:Holiday {name: "Midsummer"})
 RETURN DISTINCT food
 ----
-
+// The query returns duplicates even with DISTINCT. Only one time it returned without duplicates. How would you suggest I modify the query to remove all duplicates?
 Answer: Dill boiled potatoes, Jansson’s temptation, pickled herring, snaps, and strawberries.
 
 === When do Swedes eat pickled herring with snaps?
@@ -193,5 +193,5 @@ Answer: Dill boiled potatoes, Jansson’s temptation, pickled herring, snaps, an
 MATCH (holiday:Holiday) WHERE (holiday)<-[:SERVED_ON]-(:Drink {name: "snaps"})-[:SERVED_WITH]->(:Dish {name: "pickled herring"})
 RETURN DISTINCT holiday
 ----
-
+// The query returns duplicates even with DISTINCT. Only one time it returned without duplicates. How would you suggest I modify the query to remove all duplicates?
 Answer: Midsummer and Christmas.
