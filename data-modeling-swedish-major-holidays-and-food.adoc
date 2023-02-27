@@ -11,7 +11,7 @@ image::https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/%C3%85rsn%C3%A4
 
 How are Swedish major holidays are connected to food in the world of data, you might wonder?
 
-The following steps will help you find out the connection.
+The following steps will help you find out the connection using Neo4j graph database as example.
 
 == Visualizing the data model
 
